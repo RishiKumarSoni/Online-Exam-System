@@ -27,42 +27,45 @@ let tfootRef = document.getElementById('tfoot');
 let count = 0;
 let text = [];
 let result = [];
-let finalArr = {attempted:0, unattempted:20, correct:0, incorrect:0, marks:0};
+let finalArr = {
+  attempted: 0,
+  unattempted: 20,
+  correct: 0,
+  incorrect: 0,
+  marks: 0,
+};
 
 let questionsArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
 
 //https://the-trivia-api.com/api/questions?limit=20&region=IN
 
 function getQuestion() {
-    fetch(`https://the-trivia-api.com/api/questions?limit=20&region=IN`)
-
+  fetch(`https://the-trivia-api.com/api/questions?limit=20&region=IN`)
     .then((response) => response.json())
-    
+
     .then((data) => {
-        result = data;
-        updateQuestion()
+      result = data;
+      updateQuestion();
     });
 }
 
 getQuestion();
 
 function updateQuestion() {
+  text = result[count];
+  let a = text.incorrectAnswers[2];
+  let b = text.correctAnswer;
+  let c = text.incorrectAnswers[1];
+  let d = text.incorrectAnswers[0];
 
-    text = result[count];
-    let a = text.incorrectAnswers[2];
-    let b = text.correctAnswer;
-    let c = text.incorrectAnswers[1];
-    let d = text.incorrectAnswers[0];
+  // console.log(text.question);
+  // console.log(text.correctAnswer);
 
-    // console.log(text.question);
-    // console.log(text.correctAnswer);
+  questionNumRef.innerHTML = count + 1;
 
-    questionNumRef.innerHTML = count+1;
-    
-    questionnaireRef.innerHTML = `
+  questionnaireRef.innerHTML = `
 
-        
+
         <div id="question">
             <b><p id="ques">${text.question}</p></b>
         </div>
@@ -83,94 +86,86 @@ function updateQuestion() {
         </div>
     `;
 
-    count += 1;
-    
-    // show and hide of previous and next buttons
-    if(count === 1){
-        previousRef.style.display = 'none';
-    }else{
-        previousRef.style.display = 'block';
-    }
+  count += 1;
 
-    if(count === 20){
-        nextRef.style.display = 'none';
-        submitRef.style.display = 'block';
-    }else{
-        submitRef.style.display = 'none';
-    }
-   
+  // show and hide of previous and next buttons
+  if (count === 1) {
+    previousRef.style.display = 'none';
+  } else {
+    previousRef.style.display = 'block';
+  }
+
+  if (count === 20) {
+    nextRef.style.display = 'none';
+    submitRef.style.display = 'block';
+  } else {
+    submitRef.style.display = 'none';
+  }
 }
 
-function updateQuestionsArr(i, ans){
-    // let temp = [option1Ref.value, option2Ref.value, option3Ref.value, option4Ref.value];
-    // let temp = option1Ref.innerHTML;
-    // console.log(radio1.innerHTML);
+function updateQuestionsArr(i, ans) {
+  // let temp = [option1Ref.value, option2Ref.value, option3Ref.value, option4Ref.value];
+  // let temp = option1Ref.innerHTML;
+  // console.log(radio1.innerHTML);
 
-    if(questionsArr[count] === 0){
-        questionsArr[count] = i;
-    }
-    else{
-        uncheck();
-        questionsArr[count] = i;
-    }
+  if (questionsArr[count] === 0) {
+    questionsArr[count] = i;
+  } else {
+    uncheck();
+    questionsArr[count] = i;
+  }
 
-    if(ans == text.correctAnswer){
-        finalArr.correct += 1;
-        console.log('your answer is correct', ans);
+  if (ans == text.correctAnswer) {
+    finalArr.correct += 1;
+    console.log('your answer is correct', ans);
+  } else {
+    finalArr.incorrect += 1;
+    console.log('your answer is incorrect', ans);
+  }
 
-    }
-    else{
-        finalArr.incorrect += 1;
-        console.log('your answer is incorrect', ans);
-
-    }
-
-    console.log('option ', i, ' is selected');
-    console.log(questionsArr);
-
+  localStorage.setItem('finalArr', JSON.stringify(finalArr));
+  console.log('option ', i, ' is selected');
+  console.log(questionsArr);
 }
 
 function calculateMarks() {
-    let temp = 0;
-    for (let i = 0; i < questionArr.length; i++) {
-        if(questionsArr[i] === 0){
-            temp += 1;
-        }
+  let temp = 0;
+  for (let i = 0; i < questionArr.length; i++) {
+    if (questionsArr[i] === 0) {
+      temp += 1;
     }
+  }
 
-    finalArr.unattempted = temp;
-    finalArr.attempted = questionsArr.length - temp;
-    
+  finalArr.unattempted = temp;
+  finalArr.attempted = questionsArr.length - temp;
 }
 
 // 15 minute countdown timer
-let timerLimit = new Date().getTime() + 1*60*1000;
+let timerLimit = new Date().getTime() + 1 * 60 * 1000;
 
-var x = setInterval(function(){
+var x = setInterval(function () {
+  let now = new Date().getTime();
+  let timePassed = timerLimit - now;
 
-    let now = new Date().getTime();
-    let timePassed = timerLimit - now;
+  // let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
 
-    // let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
+  minuteRef.innerHTML = minutes;
+  secondRef.innerHTML = seconds;
 
-    minuteRef.innerHTML = minutes;
-    secondRef.innerHTML = seconds;
-    
-    if(minutes === 0 && seconds === 0){
-        console.log('timeout');
-        window.location.href = "./final.html";
-        // finalUpdate();
-    }
-
+  if (minutes === 0 && seconds === 0) {
+    console.log('timeout');
+    window.location.href = './final.html';
+    // finalUpdate();
+  }
 }, 1000);
 
 function finalUpdate() {
-    tbodyRef.innerHTML = ``;
-    tfootRef.innerHTML = ``;
+  tbodyRef.innerHTML = ``;
+  tfootRef.innerHTML = ``;
 
-    tbodyRef.innerHTML = `
+  tbodyRef.innerHTML = `
         <tr>
             <td>${finalArr.attempted}</td>
             <td>${finalArr.unattempted}</td>
@@ -179,35 +174,28 @@ function finalUpdate() {
         </tr>
     `;
 
-    tfootRef.innerHTML = `
+  tfootRef.innerHTML = `
         <tr>
             <td colspan="3">Total Marks</td>
             <td>${finalArr.marks}</td>
-        </tr>   
+        </tr>
     `;
 }
-
 
 // console.log(count);
 // previous button code
 function oldQuestion() {
-    count -= 2;
-    updateQuestion();
+  count -= 2;
+  updateQuestion();
 }
-
 
 // clear radio buttons
 function uncheck() {
-
-    try{
-        let temp = document.querySelector('input[type=radio][name=a]:checked');
-        console.log(temp.checked);
-        temp.checked = false;
-
-    }
-    catch(error){
-        console.log('error:', error);
-    }
-        
+  try {
+    let temp = document.querySelector('input[type=radio][name=a]:checked');
+    console.log(temp.checked);
+    temp.checked = false;
+  } catch (error) {
+    console.log('error:', error);
+  }
 }
-

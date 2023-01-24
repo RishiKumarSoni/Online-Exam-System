@@ -1,19 +1,26 @@
-function setTimer(){
-    console.log('set tier should be working');
-    var x = setInterval(function(){
+let tbodyRef = document.getElementById('tbody');
+let tfootRef = document.getElementById('tfoot');
 
-        let now = new Date().getTime;
-        let timePassed = timerLimit - now;
+finalUpdate();
 
-        // let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
+function finalUpdate() {
+  let finalArr = JSON.parse(localStorage.getItem('finalArr'));
+  tbodyRef.innerHTML = ``;
+  tfootRef.innerHTML = ``;
 
-        minuteRef.innerHTML = minutes;
-        secondRef.innerHTML = seconds;
+  tbodyRef.innerHTML = `
+        <tr>
+            <td>${finalArr.attempted}</td>
+            <td>${finalArr.unattempted}</td>
+            <td>${finalArr.correct}</td>
+            <td>${finalArr.incorrect}</td>
+        </tr>
+    `;
 
-        if(timePassed < 0){
-            document.getElementById("submit").click();
-        }
-    }, 1000);
+  tfootRef.innerHTML = `
+        <tr>
+            <td colspan="3">Total Marks</td>
+            <td>${finalArr.marks}</td>
+        </tr>
+    `;
 }

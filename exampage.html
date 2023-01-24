@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exam Page</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <header id="head-info">
-        <img src="./images/jsa.jpeg" alt="logo" id="logo">
-        <h3>General Knowledge Test</h3>
+      <img src="./images/jsa.jpeg" alt="logo" id="logo" />
+      <h3>General Knowledge Test</h3>
     </header>
     <main id="main">
-        <div id="top">
-            <h4>Question: <span id="questionNum"></span>/20</h4>
-            <p>Time left: <span id="minute"></span> : <span id="second"></span></p>
+      <div id="top">
+        <h4>Question: <span id="questionNum"></span>/20</h4>
+        <p>Time left: <span id="minute"></span> : <span id="second"></span></p>
+      </div>
+
+      <section id="questionnaire"></section>
+
+      <div id="down">
+        <div>
+          <button
+            class="button"
+            id="previous"
+            type="button"
+            onclick="oldQuestion();"
+          >
+            Previous
+          </button>
+          <button class="button" id="clear" type="reset" onclick="uncheck();">
+            Clear Response
+          </button>
+          <button
+            class="button"
+            id="next"
+            type="button"
+            onclick="updateQuestion();"
+          >
+            Next
+          </button>
+          <button class="button" id="submit" type="submit">
+            <a href="./final.html">Submit</a>
+          </button>
         </div>
-
-        <section id="questionnaire">
-            
-
-        </section>
-
-        <div id="down">
-            <div>
-                <button class="button" id="previous" type="button" onclick="oldQuestion();">Previous</button>
-                <button class="button" id="clear" type="reset" onclick="uncheck();">Clear Response</button>
-                <button class="button" id="next" type="button" onclick="updateQuestion();">Next</button>
-                <button class="button" id="submit" type="submit" onclick="finalUpdate();"><a href="./final.html">Submit</a></button>
-            </div>
-        </div>
+      </div>
     </main>
-
-    
-</body>
-<script src="./js/app.js"></script>
+  </body>
+  <script src="./js/app.js"></script>
 </html>
