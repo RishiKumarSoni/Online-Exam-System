@@ -1,0 +1,325 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    margin: 0 auto;
+
+    background-color: rgba(127, 255, 212, 0.1);
+
+}
+
+#login {
+    margin: auto;
+
+    max-width: 420px;
+}
+
+#wrapper {
+    padding: 1rem;
+    margin-top: 50px;
+
+}
+
+#header{
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.p1{
+    font-size: bold;
+
+    margin-bottom: -8px;
+    padding: 0;
+
+    font-size: 32px;
+}
+
+.p2 {
+    font-size: 14px;
+}
+
+#main-form {
+    background-color: #fff;
+    padding: 2rem;
+}
+
+#email {
+    border: none;
+    border-radius: 4px;
+
+    width: 100%;
+    margin-top: -16px;
+
+    line-height: 32px;
+    background-color: rgba(127, 255, 212, 0.4);
+}
+
+#password {
+    border: none;
+    border-radius: 4px;
+
+    width: 100%;
+    margin-top: -16px;
+    margin-bottom: 16px;
+
+    line-height: 32px;
+    background-color: rgba(127, 255, 212, 0.4);
+}
+
+#text {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+#text div {
+    margin: 1rem 0;
+}
+
+#text a{
+    text-decoration: none;
+    color: blue;
+}
+
+#bottom {
+    text-align: center;
+    margin-top: 32px;
+
+}
+
+#submit{
+    border: none;
+    border-radius: 4px;
+
+    width: 100%;
+
+    color: white;
+    font-weight: 700;
+
+    line-height: 32px;
+    background-color: rgb(79, 155, 255);
+}
+
+#bottom a{
+    text-decoration: none;
+    color: rgb(0, 81, 255);
+    cursor: pointer;
+}
+
+ /* information page */
+
+#head-info {
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+ #logo {
+    width: 32px;
+    height: 32px;
+    
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    margin: 0 16px;
+ }
+
+ #main {
+    max-width: 900px;
+
+    border: 1px solid #000;
+
+    margin: 50px auto 50px auto;
+    padding: 1rem;
+
+    font-size: 16px;
+
+    background-color: rgba(127, 255, 212, 0.1);
+
+ }
+
+ #top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 1rem 0;
+ }
+
+ #questionnaire {
+    margin: 1rem 0;
+ }
+
+ #question {
+    display: flex;
+    align-items: center;
+ }
+
+ #options {
+    display: block;
+    
+    padding-left: 32px;
+ }
+
+ .option {
+    margin: 8px 0;
+ }
+
+ #down{
+    margin-top: 64px;
+ }
+
+#down div{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#down button {
+    line-height: 32px;
+    width: 18%;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+
+    background-color: rgba(54, 60, 68, 0.8);
+
+    cursor: pointer;
+}
+
+/* #submit {
+    background-color: rgba(85, 159, 255, 0.8);
+    font-size: 18px;
+} */
+
+#down button a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+}
+
+ /* --- informatino style --- */
+
+#info-body {
+    padding: 2rem;
+}
+
+#info-ol {
+    margin: 1rem 0;
+}
+
+#info-ol li{
+    padding: 4px 0;
+}
+
+#otp {
+    margin: 1rem 2rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: start;
+}
+
+#otp input {
+    line-height: 32px;
+    letter-spacing: 4px;
+
+    width: 10%;
+
+    margin-left: 2rem;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    background-color: rgba(66, 147, 253, 0.3);
+}
+
+#info-body a{
+    text-align: center;
+}
+
+#info-btn {
+    line-height: 32px;
+    width: 10%;
+
+    margin-left: 2rem;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+
+    background-color: rgba(66, 147, 253, 0.8);
+
+    cursor: pointer;
+}
+
+ /* final page */
+
+#final-body {
+    padding: 2rem;
+    background-color: #eee;
+}
+
+#note {
+    text-align: center;
+}
+
+#note h1{
+    font-size: 64px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#note p{
+    font-size: 20px;
+    margin-bottom: 2rem;
+}
+
+#details {
+    max-width: 750px;
+
+    margin: 0 auto;
+
+    text-align: center;
+    background-color: #fff;
+
+    border: 1px solid #ddd;
+}
+
+#details table{
+    padding: 1rem;
+}
+
+#details td{
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+#thead td{
+    background-color: rgb(221, 255, 253);
+}
+
+#tbody td{
+    background-color: #eee;
+}
+
+#tfoot td{
+    background-color: rgb(221, 255, 253);
+}
