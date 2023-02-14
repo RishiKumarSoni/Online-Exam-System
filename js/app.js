@@ -117,11 +117,15 @@ function updateQuestionsArr(i, ans) {
 
   if (ans == text.correctAnswer) {
     finalArr.correct += 1;
+    finalArr.marks = finalArr.correct;
     console.log('your answer is correct', ans);
   } else {
     finalArr.incorrect += 1;
     console.log('your answer is incorrect', ans);
   }
+
+  finalArr.attempted = finalArr.correct + finalArr.incorrect;
+  finalArr.unattempted = 20 - finalArr.attempted;
 
   localStorage.setItem('finalArr', JSON.stringify(finalArr));
   console.log('option ', i, ' is selected');
@@ -141,7 +145,7 @@ function calculateMarks() {
 }
 
 // 15 minute countdown timer
-let timerLimit = new Date().getTime() + 1 * 60 * 1000;
+let timerLimit = new Date().getTime() + 15 * 60 * 1000;
 
 var x = setInterval(function () {
   let now = new Date().getTime();
